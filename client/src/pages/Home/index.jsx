@@ -1,42 +1,31 @@
 import React from "react";
 import { Grid, Box, Container } from "@mui/material";
 
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-
 import FolderList from "../../components/FolderList";
 import NoteList from "../../components/NoteList";
+import Note from "../../components/Note";
 
 const folders = [
-  { name: "1" },
-  { name: "2" },
-  { name: "3" },
-  { name: "4" },
-  { name: "5" },
-  { name: "6" },
-  { name: "7" },
-  { name: "8" },
-  { name: "9" },
-  { name: "10" },
-  { name: "11" },
-  { name: "12" },
-  { name: "13" },
+  { id: 1, name: "folder 1" },
+  { id: 2, name: "folder 2" },
+  { id: 3, name: "folder 3" },
+  { id: 4, name: "folder 4" },
+  { id: 5, name: "folder 5" },
+  { id: 6, name: "folder 6" },
+  { id: 7, name: "folder 7" },
+  { id: 9, name: "folder 9" },
 ];
 
 const notes = [
-  { title: "1" },
-  { title: "2" },
-  { title: "3" },
-  { title: "4" },
-  { title: "5" },
-  { title: "6" },
-  { title: "7" },
-  { title: "8" },
-  { title: "9" },
-  { title: "10" },
-  { title: "11" },
-  { title: "12" },
-  { title: "13" },
+  { id: 1, title: "note 1" },
+  { id: 2, title: "note 2" },
+  { id: 3, title: "note 3" },
+  { id: 4, title: "note 4" },
+  { id: 5, title: "note 5" },
+  { id: 6, title: "note 6" },
+  { id: 7, title: "note 7" },
+  { id: 8, title: "note 8" },
+  { id: 9, title: "note 9" },
 ];
 
 export default function Home() {
@@ -61,10 +50,7 @@ export default function Home() {
           <Box
             sx={{ backgroundColor: "#fff", height: "100%", overflow: "hidden" }}
           >
-            <Editor
-              wrapperStyle={{ height: "100%", overflow: "hidden" }}
-              editorStyle={{ height: "80%" }}
-            />
+            <Note />
           </Box>
         </Grid>
       </Grid>

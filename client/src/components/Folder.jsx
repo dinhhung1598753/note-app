@@ -1,6 +1,6 @@
 import { CardActionArea, Card, Typography, CardContent } from "@mui/material";
 
-export default function Note({ name }) {
+export default function Folder({ name }) {
   return (
     <Card sx={{ maxWidth: 345, marginBottom: "5px" }}>
       <CardActionArea>

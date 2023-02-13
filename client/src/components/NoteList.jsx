@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { CreateNewFolderOutlined } from "@mui/icons-material";
 
-export default function Note({ notes }) {
+export default function NoteList({ notes }) {
   return (
     <List
       dense
@@ -30,7 +30,7 @@ export default function Note({ notes }) {
       }
     >
       {notes.map((note) => (
-        <Card sx={{ maxWidth: 345, marginBottom: "5px" }}>
+        <Card sx={{ maxWidth: 345, marginBottom: "5px" }} key={note.id}>
           <CardActionArea>
             <CardContent sx={{ padding: "10px" }}>
               <Typography variant="body1" color="text.secondary">
