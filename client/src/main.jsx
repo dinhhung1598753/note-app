@@ -8,20 +8,23 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "./index.css";
+import AppProvider from "./store/Provider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Container
-      sx={{
-        maxWidth: "100% !important",
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundImage: "url('/bg.jpeg')",
-      }}
-    >
-      <RouterProvider router={router} />
-    </Container>
+    <AppProvider>
+      <Container
+        sx={{
+          maxWidth: "100% !important",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundImage: "url('/bg.jpeg')",
+        }}
+      >
+        <RouterProvider router={router} />
+      </Container>
+    </AppProvider>
   </React.StrictMode>
 );

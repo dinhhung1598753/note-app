@@ -8,7 +8,16 @@ import {
 } from "@mui/material";
 import { CreateNewFolderOutlined } from "@mui/icons-material";
 
-export default function NoteList({ notes }) {
+import { useStore } from "../store/hooks";
+
+import * as action from "../store/actions";
+
+export default function NoteList() {
+  const [state, dispatch] = useStore();
+  const { selectedFolder } = state;
+  const changeNote = (noteId) => {
+    return dispatch(action.selectNote({ id: noteId }));
+  };
   return (
     <List
       dense
@@ -29,12 +38,23 @@ export default function NoteList({ notes }) {
         </Box>
       }
     >
-      {notes.map((note) => (
-        <Card sx={{ maxWidth: 345, marginBottom: "5px" }} key={note.id}>
+      {selectedFolder.notes.map((note) => (
+        <Card
+          sx={{
+            maxWidth: 345,
+            marginBottom: "5px",
+            ...{
+              backgroundColor:
+                selectedFolder.selectedNote.id === note.id ? "#d0d288" : "",
+            },
+          }}
+          key={note.id}
+          onClick={() => changeNote(note.id)}
+        >
           <CardActionArea>
             <CardContent sx={{ padding: "10px" }}>
               <Typography variant="body1" color="text.secondary">
-                {note.title}
+                {note.content}
               </Typography>
             </CardContent>
           </CardActionArea>
