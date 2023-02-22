@@ -1,11 +1,17 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
-import { folderSlice } from "./slices/folderSlice";
+import { folderSlice } from "./folder/slice";
+
+const rootReducer = combineReducers({
+  [folderSlice.name]: folderSlice.reducer,
+});
 
 const makeStore = () =>
   configureStore({
-    reducer: { [folderSlice.name]: folderSlice.reducer },
+    reducer: rootReducer,
     devTools: true,
   });
+
+export type RootState = ReturnType<typeof rootReducer>;
 
 export const wrapper = createWrapper(makeStore);

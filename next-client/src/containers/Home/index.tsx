@@ -6,10 +6,10 @@ const HomePage = () => {
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="w-4/6 h-4/6 bg-white rounded-lg flex">
-        <div className="flex-none w-52">
+        <div className="flex-none w-52 border-r">
           <FolderList />
         </div>
-        <div className="flex-none w-52">
+        <div className="flex-none w-52 border-r">
           <NoteList />
         </div>
         <div className="flex-1">
