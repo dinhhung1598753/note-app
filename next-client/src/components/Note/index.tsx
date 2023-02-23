@@ -35,7 +35,7 @@ const Note = () => {
       blocksFromHTML.entityMap
     );
     setEditorState(EditorState.createWithContent(state));
-  }, [note?.id]);
+  }, [note]);
 
   const onEditorStateChange = (state: EditorState) => {
     const content = draftToHtml(convertToRaw(state.getCurrentContent()));

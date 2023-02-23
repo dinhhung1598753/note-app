@@ -1,3 +1,4 @@
+import { data } from "~/mocks/data.json";
 import { createSlice } from "@reduxjs/toolkit";
 import { Folder, Note } from "index";
 
@@ -8,7 +9,7 @@ export type FolderState = {
 };
 
 const initialState: FolderState = {
-  folders: [],
+  folders: data as Folder[],
   selected: 1,
   selectedNote: 1,
 };
@@ -22,6 +23,8 @@ export const folderSlice = createSlice({
     },
     setSelected(state, action) {
       state.selected = action.payload;
+      state.selectedNote =
+        state.folders.find((x) => x.id === action.payload)?.notes[0]?.id ?? 0;
     },
     addFolder(state, action) {
       let newFolderId = 1;
@@ -60,7 +63,10 @@ export const folderSlice = createSlice({
       const selectedNote = selectedFolder?.notes?.find(
         (x) => x.id === action.payload.id
       );
-      if (selectedNote) selectedNote.content = action.payload.content;
+      if (selectedNote) {
+        selectedNote.content = action.payload.content;
+        selectedNote.updatedAt = new Date().getTime();
+      }
     },
     changeSelectedFolder(state, action) {
       state.selected = action.payload;

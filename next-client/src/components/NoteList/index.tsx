@@ -29,23 +29,27 @@ const NoteList = () => {
           onClick={() => addNewNote()}
         />
       </div>
-      <ul className="flex flex-col gap-2 overflow-auto h-5/6 py-2">
+      <ul className="flex flex-col gap-2 overflow-auto h-5/6 py-2  text-white">
         {notes &&
           notes.map((note) => (
             <li key={note.id}>
               <div
                 className={classNames(
-                  "bg-slate-500 rounded-md px-2 pt-1 shadow-sm shadow-current hover:cursor-pointer h-12 truncate flex flex-col justify-between",
-                  { "bg-green-500": note.id === selectedNote }
+                  "bg-cyan-700 rounded-md px-2 pt-1 shadow-sm shadow-current hover:cursor-pointer h-12  flex flex-col justify-between",
+                  { "bg-teal-700": note.id === selectedNote }
                 )}
                 onClick={() => changeNote(note.id)}
               >
                 <div
-                  className="h-6 text-xl mr-2"
+                  className="h-6 text-xl mr-2 truncate"
                   dangerouslySetInnerHTML={{ __html: note.content ?? "" }}
                 ></div>
                 <div className="flex text-xs justify-end">
-                  <span>{format(note.updatedAt, "yyyy-MM-dd hh:mm")}</span>
+                  <span>
+                    {note.updatedAt
+                      ? format(note.updatedAt, "yyyy-MM-dd hh:mm")
+                      : ""}
+                  </span>
                 </div>
               </div>
             </li>

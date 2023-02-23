@@ -24,7 +24,7 @@ const FolderList = () => {
   };
   return (
     <>
-      <div className="h-full p-2">
+      <div className="h-full p-2  bg-[#b0b9a3]">
         <div className="my-2 flex justify-between">
           <p className="text-xl font-bold">Folders</p>
           <Image
@@ -42,8 +42,8 @@ const FolderList = () => {
               <li key={folder.id}>
                 <div
                   className={classNames(
-                    "bg-slate-500 rounded-md p-2 shadow-sm shadow-current hover:cursor-pointer truncate text-xl h-12",
-                    { "bg-green-500": folder.id === selectedFolderId }
+                    "bg-cyan-700 rounded-md p-2 shadow-sm shadow-current hover:cursor-pointer truncate text-xl text-white h-12",
+                    { "bg-teal-700": folder.id === selectedFolderId }
                   )}
                   onClick={() => changeFolder(folder.id)}
                 >
