@@ -1,4 +1,4 @@
-import { data } from "~/mocks/data.json";
+import data from "~/mocks/data.json";
 import { createSlice } from "@reduxjs/toolkit";
 import { Folder, Note } from "index";
 
@@ -9,7 +9,7 @@ export type FolderState = {
 };
 
 const initialState: FolderState = {
-  folders: data as Folder[],
+  folders: data.folders as Folder[],
   selected: 1,
   selectedNote: 1,
 };
@@ -70,6 +70,7 @@ export const folderSlice = createSlice({
     },
     changeSelectedFolder(state, action) {
       state.selected = action.payload;
+      state.selectedNote = 1;
     },
     changeSelectedNote(state, action) {
       state.selectedNote = action.payload;

@@ -11,7 +11,7 @@ import {
 import draftToHtml from "draftjs-to-html";
 import dynamic from "next/dynamic";
 import { useSelector, useDispatch } from "react-redux";
-import { selectNote } from "@/store/folder/selectors";
+import { selectNote, selectSelectedFolderId } from "@/store/folder/selectors";
 import { saveContent } from "@/store/folder/slice";
 
 const Editor = dynamic(
@@ -23,6 +23,7 @@ const Editor = dynamic(
 
 const Note = () => {
   const note = useSelector(selectNote);
+  const selectedFolderId = useSelector(selectSelectedFolderId);
   const dispatch = useDispatch();
   const [editorState, setEditorState] = useState(() => {
     return EditorState.createEmpty();
@@ -35,7 +36,7 @@ const Note = () => {
       blocksFromHTML.entityMap
     );
     setEditorState(EditorState.createWithContent(state));
-  }, [note]);
+  }, [note?.id, selectedFolderId]);
 
   const onEditorStateChange = (state: EditorState) => {
     const content = draftToHtml(convertToRaw(state.getCurrentContent()));

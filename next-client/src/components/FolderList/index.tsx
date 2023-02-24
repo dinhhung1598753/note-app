@@ -2,13 +2,16 @@ import { useState } from "react";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import classNames from "classnames";
-import { selectFolders, selectSelected } from "@/store/folder/selectors";
+import {
+  selectFolders,
+  selectSelectedFolderId,
+} from "@/store/folder/selectors";
 import { addFolder, changeSelectedFolder } from "@/store/folder/slice";
 
 const FolderList = () => {
   const folders = useSelector(selectFolders);
   const dispatch = useDispatch();
-  const selectedFolderId = useSelector(selectSelected);
+  const selectedFolderId = useSelector(selectSelectedFolderId);
 
   const [showModal, setShowModal] = useState(false);
   const [newFolderName, setNewFolderName] = useState("");

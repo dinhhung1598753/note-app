@@ -8,7 +8,7 @@ export const selectFolders = createSelector(
   (state) => state.folders
 );
 
-export const selectSelected = createSelector(
+export const selectSelectedFolderId = createSelector(
   [selectFolderState],
   (state) => state.selected
 );
@@ -19,7 +19,7 @@ export const selectSelectedNote = createSelector(
 );
 
 export const selectNotes = createSelector(
-  [selectFolders, selectSelected],
+  [selectFolders, selectSelectedFolderId],
   (state, selected) => state.find((x) => x.id === selected)?.notes
 );
 
